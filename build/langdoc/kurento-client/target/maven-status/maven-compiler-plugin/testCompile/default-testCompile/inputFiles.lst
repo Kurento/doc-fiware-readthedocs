@@ -12,7 +12,6 @@
 /opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/SyncConstMethodsTest.java
 /opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/ConstructionTest.java
 /opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/model/client/events/BaseEvent.java
-/opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/KmsUrlServiceLoaderTest.java
 /opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/model/Sample2Impl.java
 /opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/model/client/events/SampleEvent.java
 /opt/kurento/doc-fiware/build/langdoc/kurento-client/src/test/java/org/kurento/client/internal/test/WebSocketRomTest.java

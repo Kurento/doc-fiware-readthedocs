@@ -6,6 +6,13 @@
 # so when this variable is updated, it should be also updated in conf.py
 
 DOC_VERSION = 6.1.1
+KMS_VERSION = 6.1.0
+CLIENT_JAVA_VERSION = 6.1.0
+CLIENT_JS_VERSION = 6.1.0
+UTILS_JS_VERSION = 6.1.0
+TUTORIAL_JAVA_VERSION = 6.1.0
+TUTORIAL_JS_VERSION = 6.1.0
+TUTORIAL_NODE_VERSION = 6.1.0
 
 # You can set these variables from the command line.
 SPHINXOPTS    =

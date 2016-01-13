@@ -1,4 +1,3 @@
-
 package org.kurento.client.internal;
 
 import java.lang.annotation.Retention;

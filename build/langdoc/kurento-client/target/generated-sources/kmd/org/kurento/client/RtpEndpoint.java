@@ -11,47 +11,9 @@ package org.kurento.client;
  *
  **/
 @org.kurento.client.internal.RemoteClass
-public interface RtpEndpoint extends BaseRtpEndpoint {
+public interface RtpEndpoint extends SdpEndpoint {
 
 
-    /**
-     * Add a {@link EventListener} for event {@link OnKeySoftLimitEvent}. Synchronous call.
-     *
-     * @param  listener Listener to be called on OnKeySoftLimitEvent
-     * @return ListenerSubscription for the given Listener
-     *
-     **/
-    @org.kurento.client.internal.server.EventSubscription(OnKeySoftLimitEvent.class)
-    ListenerSubscription addOnKeySoftLimitListener(EventListener<OnKeySoftLimitEvent> listener);
-    /**
-     * Add a {@link EventListener} for event {@link OnKeySoftLimitEvent}. Asynchronous call.
-     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
-     *
-     * @param listener Listener to be called on OnKeySoftLimitEvent
-     * @param cont     Continuation to be called when the listener is registered
-     *
-     **/
-    @org.kurento.client.internal.server.EventSubscription(OnKeySoftLimitEvent.class)
-    void addOnKeySoftLimitListener(EventListener<OnKeySoftLimitEvent> listener, Continuation<ListenerSubscription> cont);
-    
-	/**
-     * Remove a {@link ListenerSubscription} for event {@link OnKeySoftLimitEvent}. Synchronous call.
-     *
-     * @param listenerSubscription Listener subscription to be removed
-     *
-     **/
-    @org.kurento.client.internal.server.EventSubscription(OnKeySoftLimitEvent.class)
-    void removeOnKeySoftLimitListener(ListenerSubscription listenerSubscription);
-    /**
-     * Remove a {@link ListenerSubscription} for event {@link OnKeySoftLimitEvent}. Asynchronous call.
-     * Calls Continuation&lt;Void&gt; when it has been removed.
-     *
-     * @param listenerSubscription Listener subscription to be removed
-     * @param cont                 Continuation to be called when the listener is removed
-     *
-     **/
-    @org.kurento.client.internal.server.EventSubscription(OnKeySoftLimitEvent.class)
-    void removeOnKeySoftLimitListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     
 
 
@@ -70,18 +32,6 @@ public interface RtpEndpoint extends BaseRtpEndpoint {
       props.add("mediaPipeline",mediaPipeline);
     }
 
-/**
- *
- * Sets a value for crypto in Builder for RtpEndpoint.
- *
- * @param crypto
- *       Crypto parameters
- *
- **/
-    public Builder withCrypto(org.kurento.client.SDES crypto){
-      props.add("crypto",crypto);
-      return this;
-    }
     }
 
 

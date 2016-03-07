@@ -7,6 +7,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme_path = ['themes']
     html_theme = 'sphinx_rtd_theme'
+    html_style = 'https://fiware.org/style/fiware_readthedocs.css'
 
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 

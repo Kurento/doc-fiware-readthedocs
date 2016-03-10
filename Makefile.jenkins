@@ -1,18 +1,7 @@
 # Makefile for Sphinx documentation
 #
 
-# Versions
-# IMPORTANT: Notice that DOC_VERSION should be the same as variable "release" in conf.py,
-# so when this variable is updated, it should be also updated in conf.py
-
-DOC_VERSION = 6.1.1
-KMS_VERSION = 6.1.0
-CLIENT_JAVA_VERSION = 6.1.0
-CLIENT_JS_VERSION = 6.1.0
-UTILS_JS_VERSION = 6.1.0
-TUTORIAL_JAVA_VERSION = 6.1.0
-TUTORIAL_JS_VERSION = 6.1.0
-TUTORIAL_NODE_VERSION = 6.1.0
+DOC_VERSION = 6.4.0
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
@@ -60,15 +49,6 @@ clean:
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	find build/html -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
-	find build/html -name "*.html" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
-	./fixlinks.sh
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
@@ -99,29 +79,6 @@ htmlhelp:
 	      ".hhp project file in $(BUILDDIR)/htmlhelp."
 
 langdoc:
-	  mkdir -p $(BUILDDIR)/langdoc
-	  rm -rf $(BUILDDIR)/langdoc/kurento-java
-	  mkdir -p $(BUILDDIR)/html/langdoc/jsdoc && mkdir -p $(BUILDDIR)/html/langdoc/javadoc
-
-	  # kurento-client javadoc
-	  rm -rf $(BUILDDIR)/langdoc/kurento-client
-	  cd  $(BUILDDIR)/langdoc && git clone https://github.com/Kurento/kurento-java.git && cd kurento-java && git checkout kurento-java-$(CLIENT_JAVA_VERSION) || git checkout $(CLIENT_JAVA_VERSION) || echo "Using master branch"
-	  mv $(BUILDDIR)/langdoc/kurento-java/kurento-client $(BUILDDIR)/langdoc
-	  cd $(BUILDDIR)/langdoc/kurento-client && mvn --batch-mode --settings /opt/kurento-settings.xml clean package -DskipTests
-	  rsync -av $(BUILDDIR)/langdoc/kurento-client/target/generated-sources/kmd/* $(BUILDDIR)/langdoc/kurento-client/src/main/java/
-	  javadoc -d $(BUILDDIR)/html/langdoc/javadoc -sourcepath $(BUILDDIR)/langdoc/*/src/main/java/ org.kurento.client
-
-	  # kurento-client-js jsdoc
-	  rm -rf $(BUILDDIR)/langdoc/kurento-client-js
-	  cd $(BUILDDIR)/langdoc && git clone https://github.com/Kurento/kurento-client-js.git
-	  cd $(BUILDDIR)/langdoc/kurento-client-js && git checkout kurento-client-js-$(CLIENT_JS_VERSION) || git checkout $(CLIENT_JS_VERSION) || echo "Using master branch" && npm install && node_modules/.bin/grunt --force jsdoc
-	  cp -r $(BUILDDIR)/langdoc/kurento-client-js/doc/jsdoc $(BUILDDIR)/html/langdoc/jsdoc/kurento-client-js
-
-	  # kurento-utils-js jsdoc
-	  rm -rf $(BUILDDIR)/langdoc/kurento-utils-js
-	  cd $(BUILDDIR)/langdoc && git clone https://github.com/Kurento/kurento-utils-js.git
-	  cd $(BUILDDIR)/langdoc/kurento-utils-js && git checkout kurento-utils-js-$(UTILS_JS_VERSION) || git checkout $(UTILS_JS_VERSION) || echo "Using master branch" && npm install && node_modules/.bin/grunt --force jsdoc
-	  cp -r $(BUILDDIR)/langdoc/kurento-utils-js/doc/jsdoc/kurento-utils/$(UTILS_JS_VERSION) $(BUILDDIR)/html/langdoc/jsdoc/kurento-utils-js
 
 qthelp:
 	$(SPHINXBUILD) -b qthelp $(ALLSPHINXOPTS) $(BUILDDIR)/qthelp
@@ -143,15 +100,6 @@ devhelp:
 
 epub:
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
-	find build/epub -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
-	find build/epub -name "*.html" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
-	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
 	@echo
 	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
 
@@ -165,14 +113,6 @@ latex:
 latexpdf:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..DOC_VERSION.textbar..@$(DOC_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..KMS_VERSION.textbar..@$(KMS_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..CLIENT_JAVA_VERSION.textbar..@$(CLIENT_JAVA_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..CLIENT_JS_VERSION.textbar..@$(CLIENT_JS_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..UTILS_JS_VERSION.textbar..@$(UTILS_JS_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..TUTORIAL_JAVA_VERSION.textbar..@$(TUTORIAL_JAVA_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..TUTORIAL_JS_VERSION.textbar..@$(TUTORIAL_JS_VERSION)@" {} \;
-	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..TUTORIAL_NODE_VERSION.textbar..@$(TUTORIAL_NODE_VERSION)@" {} \;
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
@@ -225,17 +165,7 @@ dist: langdoc html epub latexpdf
 	@echo
 	@echo "Packaging documentation"
 	@echo
-	cp $(BUILDDIR)/epub/Kurento.epub $(BUILDDIR)/latex/Kurento.pdf $(BUILDDIR)/html &&\
+	cp $(BUILDDIR)/epub/FIWARE-Stream-Oriented-GE.epub $(BUILDDIR)/latex/FIWARE-Stream-Oriented-GE.pdf $(BUILDDIR)/html &&\
 	tar zcvf $(BUILDDIR)/dist/kurento-docs-$(DOC_VERSION).tgz -C $(BUILDDIR)/html .
 
-readthedocs: langdoc
-	find ./doc -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
-	find ./doc -name "*.rst" -exec sed -i "s/langdoc/_static\/langdoc/g" {} \;
+readthedocs:

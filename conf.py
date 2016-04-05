@@ -19,6 +19,7 @@ project = 'FIWARE-Stream-Oriented-GE'
 
 html_context = {
    'css_files': [
+      '_static/css/theme.css',
       'https://fiware.org/style/fiware_readthedocs.css'
    ]
 }

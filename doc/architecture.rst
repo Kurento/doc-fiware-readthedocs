@@ -8,7 +8,7 @@ FIWARE Stream Oriented Generic Enabler - Architecture Description
 Copyright
 =========
 
-Copyright © 2010-2015 by `Unversidad Rey Juan Carlos <https://www.urjc.es/>`__.
+Copyright © 2010-2016 by `Unversidad Rey Juan Carlos <https://www.urjc.es/>`__.
 All Rights Reserved.
 
 Legal Notice

@@ -1,5 +1,3 @@
-:orphan:
-
 FIWARE Stream Oriented Generic Enabler - Overview
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,4 +34,14 @@ provides the following features:
 - Automatic media transcodification between any of the codecs supported by
   GStreamer including VP8, H.264, H.263, AMR, OPUS, Speex, G.711, etc.
 
-.. include:: contents.rst
+Table of Contents
+=================
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+
+   Programmers Guide <source/user_guide>
+   Installation and Administration Guide <source/admin_guide>
+   Architecture Description <source/architecture>
+   Open API Specification <source/open_spec>

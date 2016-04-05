@@ -182,7 +182,7 @@ URI of its WebSocket:
 	      // Error connecting to KMS
 	   }
 
-	  // Success connecting to KMS
+	   // Success connecting to KMS
 
 	});
 
@@ -196,7 +196,7 @@ The second step is to create a pipeline using the previously created
 	      // Error creating MediaPipeline
 	   }
 
-	  // Success creating MediaPipeline
+	   // Success creating MediaPipeline
 	});
 
 Then we should create the media elements. The following snippet shows how to
@@ -210,7 +210,7 @@ create several media elements:
 	      // Error creating WebRtcEndpoint
 	   }
 
-	  // Success creating WebRtcEndpoint
+	   // Success creating WebRtcEndpoint
 	});
 
 	pipeline.create('HttpPostEndpoint', function(error, httpPostEndpoint) {
@@ -218,7 +218,7 @@ create several media elements:
 	      // Error creating HttpPostEndpoint
 	   }
 
-	  // Success creating HttpPostEndpoint
+	   // Success creating HttpPostEndpoint
 	});
 
 	pipeline.create('RtpEndpoint', function(error, rtpEndpoint) {
@@ -226,7 +226,7 @@ create several media elements:
 	      // Error creating RtpEndpoint
 	   }
 
-	  // Success creating RtpEndpoint
+	   // Success creating RtpEndpoint
 	});
 
 	// Media repository
@@ -235,7 +235,7 @@ create several media elements:
 	      // Error creating PlayerEndpoint
 	   }
 
-	  // Success creating PlayerEndpoint
+	   // Success creating PlayerEndpoint
 	});
 
 	pipeline.create('RecorderEndpoint', {uri : 'file:///tmp/recording.webm'}, function(error, recorderEndpoint) {
@@ -252,7 +252,7 @@ create several media elements:
 	      // Error creating FaceOverlayFilter
 	   }
 
-	  // Success creating FaceOverlayFilter
+	   // Success creating FaceOverlayFilter
 	});
 
 	pipeline.create('ZBarFilter', function(error, zBarFilter) {
@@ -268,7 +268,7 @@ create several media elements:
 	      // Error creating GStreamerFilter
 	   }
 
-	  // Success creating GStreamerFilter
+	   // Success creating GStreamerFilter
 	});
 
 	// Group communications
@@ -285,7 +285,7 @@ create several media elements:
 	      // Error creating Dispatcher
 	   }
 
-	  // Success creating Dispatcher
+	   // Success creating Dispatcher
 	});
 
 	pipeline.create('DispatcherOneToMany', function(error, dispatcherOneToMany) {
@@ -293,7 +293,7 @@ create several media elements:
 	      // Error creating DispatcherOneToMany
 	   }
 
-	  // Success creating DispatcherOneToMany
+	   // Success creating DispatcherOneToMany
 	});
 
 Finally, media elements can be connected. The method `connect()` of the Media
@@ -308,7 +308,7 @@ itself (loopback):
 	      // Error connecting media elements
 	   }
 
-	  // Success connecting media elements
+	   // Success connecting media elements
 	});
 
 Magic-Mirror Example

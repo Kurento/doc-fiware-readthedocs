@@ -1,5 +1,5 @@
 FIWARE Stream Oriented Generic Enabler - Architecture Description
-_________________________________________________________________
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 .. raw:: mediawiki
 

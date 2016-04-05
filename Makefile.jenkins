@@ -1,7 +1,14 @@
 # Makefile for Sphinx documentation
-#
 
+# Versions
 DOC_VERSION = 6.4.0
+KMS_VERSION = 6.4.0
+CLIENT_JAVA_VERSION = 6.4.0
+CLIENT_JS_VERSION = 6.4.0
+UTILS_JS_VERSION = 6.4.0
+TUTORIAL_JAVA_VERSION = 6.4.0
+TUTORIAL_JS_VERSION = 6.2.1
+TUTORIAL_NODE_VERSION = 6.2.1
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
@@ -49,6 +56,14 @@ clean:
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	find build/html -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
+	find build/html -name "*.html" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
@@ -100,6 +115,14 @@ devhelp:
 
 epub:
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
+	find build/epub -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
+	find build/epub -name "*.html" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
 	@echo
 	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
 
@@ -112,6 +135,14 @@ latex:
 
 latexpdf:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..DOC_VERSION.textbar..@$(DOC_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..KMS_VERSION.textbar..@$(KMS_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..CLIENT_JAVA_VERSION.textbar..@$(CLIENT_JAVA_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..CLIENT_JS_VERSION.textbar..@$(CLIENT_JS_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..UTILS_JS_VERSION.textbar..@$(UTILS_JS_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..TUTORIAL_JAVA_VERSION.textbar..@$(TUTORIAL_JAVA_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..TUTORIAL_JS_VERSION.textbar..@$(TUTORIAL_JS_VERSION)@" {} \;
+	find build/latex -name "*.tex" -exec sed -i -e "s@.textbar..TUTORIAL_NODE_VERSION.textbar..@$(TUTORIAL_NODE_VERSION)@" {} \;
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
@@ -169,3 +200,11 @@ dist: langdoc html epub latexpdf
 	tar zcvf $(BUILDDIR)/dist/kurento-docs-$(DOC_VERSION).tgz -C $(BUILDDIR)/html .
 
 readthedocs:
+	find ./doc -name "*.rst" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;

@@ -1,5 +1,5 @@
 FIWARE Stream Oriented Generic Enabler - Open API Specification
-_______________________________________________________________
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The Stream Oriented API is a resource-oriented API accessed via WebSockets that
 uses JSON-RPC V2.0 based representations for information exchange. An RPC call

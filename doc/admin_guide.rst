@@ -1,5 +1,5 @@
 FIWARE Stream Oriented Generic Enabler - Installation and Administration Guide
-______________________________________________________________________________
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Introduction
 ============
@@ -61,9 +61,10 @@ installed in your system (Ubuntu):
 Installation
 ============
 
-In order to install the latest stable Kurento Media Server version you have to
-type the following commands, one at a time and in the same order as listed
-here. When asked for any kind of confirmation, reply affirmatively:
+In order to install the latest stable Kurento Media Server version
+(6.4.0) you have to type the following commands, one at a time and in
+the same order as listed here. When asked for any kind of confirmation, reply
+affirmatively:
 
 ::
 

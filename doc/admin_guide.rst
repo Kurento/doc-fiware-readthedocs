@@ -224,9 +224,10 @@ follows:
 
 ::
 
-	git clone https://github.com/Kurento/kurento-tutorial-java.git
-	cd kurento-tutorial-java/kurento-magic-mirror
-	mvn compile exec:java
+   git clone https://github.com/Kurento/kurento-tutorial-java.git
+   cd kurento-tutorial-java/kurento-magic-mirror
+   git checkout 6.4.0
+   mvn compile exec:java
 
 These commands starts an HTTP server at the localhost in the port 8443.
 Therefore, please open the web application connecting to the URL

@@ -7,10 +7,12 @@
 
 Copyright © 2013-2016 [Kurento]. Licensed under [LGPL v2.1 License].
 
-doc-kurento
-===========
+doc-fiware
+==========
 
-Kurento Documentation. Made with [Sphinx] and [Read-the-docs] theme.
+[FIWARE] Stream-Oriented Generic Enabler (GE) Documentation. The implementation
+of this GE is named [Kurento]. This documentation has been made with [Sphinx]
+and [Read-the-docs] theme.
 
 What is Kurento
 ---------------

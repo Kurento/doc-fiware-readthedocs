@@ -41,7 +41,7 @@ Table of Contents
    :glob:
    :maxdepth: 2
 
-   Programmers Guide <source/user_guide>
-   Installation and Administration Guide <source/admin_guide>
-   Architecture Description <source/architecture>
-   Open API Specification <source/open_spec>
+   Programmers Guide <doc/user_guide>
+   Installation and Administration Guide <doc/admin_guide>
+   Architecture Description <doc/architecture>
+   Open API Specification <doc/open_spec>

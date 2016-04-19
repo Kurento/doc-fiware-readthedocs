@@ -200,11 +200,11 @@ dist: langdoc html epub latexpdf
 	tar zcvf $(BUILDDIR)/dist/kurento-docs-$(DOC_VERSION).tgz -C $(BUILDDIR)/html .
 
 readthedocs:
-	find ./source -name "*.rst" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
-	find ./source -name "*.rst" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
+	find ./doc -name "*.rst" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;

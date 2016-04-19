@@ -41,7 +41,7 @@ Basic Setup
 
 First of all, developers must install Kurento Media Server. Please review the
 :doc:`installation guide <admin_guide>`. In short, KMS 6.4.0 can be
-installed in an Ubuntu 14.04 machine as follows:
+installed and started in an Ubuntu 14.04 machine as follows:
 
 ::
 
@@ -49,6 +49,7 @@ installed in an Ubuntu 14.04 machine as follows:
 	wget -O - http://ubuntu.kurento.org/kurento.gpg.key | sudo apt-key add -
 	sudo apt-get update
 	sudo apt-get install kurento-media-server-6.0
+	sudo service kurento-media-server-6.0 start
 
 Once a Kurento Media Server is installed, you need a *Kurento Client* to create
 your own applications with advanced media capabilities. A Kurento Client is a
@@ -361,15 +362,18 @@ in an Ubuntu machine, execute the following commands in the shell:
 	mvn compile exec:java
 
 The pre-requisites to run this Java demo are `Git <http://git-scm.com/>`__,
-`JDK 7 <http://openjdk.java.net/projects/jdk7/>`__, and
-`Maven <http://maven.apache.org/>`__. To install these tools in Ubuntu please
-execute these commands:
+`JDK 7 <http://openjdk.java.net/projects/jdk7/>`__,
+`Maven <http://maven.apache.org/>`__, and `Bower <http://bower.io/>`__. To
+install these tools in Ubuntu please execute these commands:
 
 ::
 
 	sudo apt-get install git
 	sudo apt-get install openjdk-7-jdk
 	sudo apt-get install maven
+	curl -sL https://deb.nodesource.com/setup | sudo bash -
+	sudo apt-get install -y nodejs
+	sudo npm install -g bower
 
 The *JavaScript* version is hosted on
 `GitHub <https://github.com/Kurento/kurento-tutorial-js>`__. To run this demo

@@ -35,45 +35,61 @@ installed in your system (Ubuntu):
 
 ::
 
-	sudo apt-get install openjdk-7-jdk
+   sudo apt-get update
+   sudo apt-get install openjdk-7-jdk
 
 - `Git <http://git-scm.com/>`__:
 
 ::
 
-	sudo apt-get install git
+   sudo apt-get install git
 
 - `Chrome <https://www.google.com/chrome/browser/>`__ (latest stable version):
 
 ::
 
-	sudo apt-get install libxss1
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i google-chrome*.deb
+   sudo apt-get install libxss1
+   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+   sudo dpkg -i google-chrome*.deb
+
+If you encounter any errors with the commands above, simply use:
+
+::
+
+   sudo apt-get -f install
 
 - `Maven <http://maven.apache.org/>`__:
 
 ::
 
-	sudo apt-get install maven
+   sudo apt-get install maven
+
+- `Bower <http://bower.io/>`__:
+
+::
+
+   curl -sL https://deb.nodesource.com/setup | sudo bash -
+   sudo apt-get install -y nodejs
+   sudo npm install -g bower
 
 
 Installation
 ============
 
-In order to install the latest stable Kurento Media Server version
+In order to install and start the latest stable Kurento Media Server version
 (6.4.0) you have to type the following commands, one at a time and in
 the same order as listed here. When asked for any kind of confirmation, reply
 affirmatively:
 
 ::
 
-	echo "deb http://ubuntu.kurento.org trusty kms6" | sudo tee /etc/apt/sources.list.d/kurento.list
-	wget -O - http://ubuntu.kurento.org/kurento.gpg.key | sudo apt-key add -
-	sudo apt-get update
-	sudo apt-get install kurento-media-server-6.0
+   echo "deb http://ubuntu.kurento.org trusty kms6" | sudo tee /etc/apt/sources.list.d/kurento.list
+   wget -O - http://ubuntu.kurento.org/kurento.gpg.key | sudo apt-key add -
+   sudo apt-get update
+   sudo apt-get install kurento-media-server-6.0
+   sudo service kurento-media-server-6.0 start
 
-After running these command, Kurento Media Server should be installed and
+After running these commands, Kurento Media Server should be installed and
 started.
 
 Configuration
@@ -85,44 +101,34 @@ following:
 
 ::
 
-	{
-	  "mediaServer" : {
-	    "resources": {
-	    //  //Resources usage limit for raising an exception when an object creation is attempted
-	    //  "exceptionLimit": "0.8",
-	    //  // Resources usage limit for restarting the server when no objects are alive
-	    //  "killLimit": "0.7",
-	        // Garbage collector period in seconds
-	        "garbageCollectorPeriod": 240
-	    },
-	    "net" : {
-	      // Uncomment just one of them
-	      /*
-	      "rabbitmq": {
-	        "address" : "127.0.0.1",
-	        "port" : 5672,
-	        "username" : "guest",
-	        "password" : "guest",
-	        "vhost" : "/"
-	      }
-	      */
-	      "websocket": {
-	        "port": 8888,
-	        //"secure": {
-	        //  "port": 8433,
-	        //  "certificate": "defaultCertificate.pem",
-	        //  "password": ""
-	        //},
-	        //"registrar": {
-	        //  "address": "ws://localhost:9090",
-	        //  "localAddress": "localhost"
-	        //},
-	        "path": "kurento",
-	        "threads": 10
-	      }
-	    }
-	  }
-	}
+   {
+     "mediaServer" : {
+       "resources": {
+       //  //Resources usage limit for raising an exception when an object creation is attempted
+       //  "exceptionLimit": "0.8",
+       //  // Resources usage limit for restarting the server when no objects are alive
+       //  "killLimit": "0.7",
+           // Garbage collector period in seconds
+           "garbageCollectorPeriod": 240
+       },
+       "net" : {
+         "websocket": {
+           "port": 8888,
+           //"secure": {
+           //  "port": 8433,
+           //  "certificate": "defaultCertificate.pem",
+           //  "password": ""
+           //},
+           //"registrar": {
+           //  "address": "ws://localhost:9090",
+           //  "localAddress": "localhost"
+           //},
+           "path": "kurento",
+           "threads": 10
+         }
+       }
+     }
+   }
 
 As of Kurento Media Server version 6, in addition to this general configuration
 file, the specific features of KMS are tuned as individual modules. Each of
@@ -229,6 +235,12 @@ follows:
    git checkout 6.4.0
    mvn compile exec:java
 
+.. note::
+
+   In order to run this example, be sure that you have installed the
+   dependencies (Kurento Media Server, JDK, Git, Chrome, Maven, and Bower) as
+   described in the section before.
+
 These commands starts an HTTP server at the localhost in the port 8443.
 Therefore, please open the web application connecting to the URL
 https://localhost:8443/ through a WebRTC capable browser (e.g. Chrome). Click
@@ -238,7 +250,7 @@ is processing media in real time, detecting faces and overlying an image on the
 top of them. This is a simple example of augmented reality in real time with
 Kurento.
 
-Take into account that this setup is assuming that port TCP 8080 is available in
+Take into account that this setup is assuming that port TCP 8443 is available in
 your system. If you would like to use another one, simply launch the demo as
 follows:
 
@@ -261,7 +273,7 @@ The output should include the kurento-media-server process:
 
 ::
 
-	nobody    1270     1  0 08:52 ?        00:01:00 /usr/bin/kurento-media-server
+	kurento    1270     1  0 08:52 ?        00:01:00 /usr/bin/kurento-media-server
 
 Network interfaces Up & Open
 ----------------------------
@@ -341,5 +353,5 @@ When KMS starts correctly, this trace is written in the log file:
 
 ::
 
-	[time] [0x10b2f880] [info]    KurentoMediaServer main.cpp:239 main() Mediaserver started
+	[time] [0x10b2f880] [info]    KurentoMediaServer main.cpp:255 main() Mediaserver started
 

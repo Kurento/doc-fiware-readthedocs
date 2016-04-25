@@ -56,7 +56,7 @@ Ping
 
 In order to warranty the WebSocket connectivity between the client and the
 Kurento Media Server, a keep-alive method is implemented. This method is based
-on a `Ping` method sent by the client, which must be replied with a `Pong`
+on a `ping` method sent by the client, which must be replied with a `pong`
 message from the server. If no response is obtained in a time interval, the
 client is aware that the connectivity with the media server has been lost.
 
@@ -70,8 +70,8 @@ A `ping` request contains the following parameters:
 * `params` (required, object). Parameters for the invocation of the ping
   message, containing these member:
 
-  * interval (required, number). Time out to receive the `Pong` message from
-    the server, in mili-seconds. By default this value is `240000` (i.e. 40
+  * interval (required, number). Time out to receive the `pong` message from
+    the server, in milliseconds. By default this value is `240000` (i.e. 40
     seconds).
 
 This is an example of `ping`:
@@ -92,9 +92,9 @@ This is an example of `ping`:
 Response
 --------
 
-The response to a `Ping` request must contain a `result` object with a `value`
-parameter with a fixed name: `Pong`. The following snippet shows the `Pong`
-response to the previous `Ping` request:
+The response to a `ping` request must contain a `result` object with a `value`
+parameter with a fixed name: `pong`. The following snippet shows the `pong`
+response to the previous `ping` request:
 
 + Body (application/json)
 
@@ -330,6 +330,9 @@ An `invoke` request contains the following parameters:
         * `sink` (required, number). Identifier of the sink media
           element.
 
+        * `offer` (optional, string). SDP offer used in the WebRTC SDP
+          negotiation (in `WebRtcEndpoint`).
+
     * `sessionId` (required, string). Session identifier.
 
 The following example shows a request message requesting the invocation of the
@@ -367,7 +370,8 @@ An `invoke` response contains the following parameters:
     * `sessionId` (required, string). Session identifier.
 
     * `value` (optional, object). Additional object which describes the
-      result of the `Invoke` operation.
+      result of the `Invoke` operation. For example, in a `WebRtcEndpoint` this
+      field is the SDP response (WebRTC SDP negotiation).
 
 The following example shows a typical response while invoking the operation
 connect:
@@ -693,6 +697,9 @@ an event of type `EndOfStream` in a `PlayerEndpoint` object:
            }
        }
    }
+
+Notice that this message has no `id` field due to the fact that no response is
+required.
 
 Response
 --------

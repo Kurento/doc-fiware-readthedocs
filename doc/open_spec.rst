@@ -10,7 +10,7 @@ message has the following members:
   be exactly `2.0`.
 
 * `id`: an unique identifier established by the client that contains a string
-  or number. The server must reply with the same value in the Response message.
+  or number. The server must reply with the same value in the response message.
   This member is used to correlate the context between both messages.
 
 * `method`: a string containing the name of the method to be invoked.
@@ -131,8 +131,8 @@ A `create` request contains the following parameters:
 * `params` (required, object). Parameters for the invocation of the create
   message, containing these members:
 
-    * type (required, string). Media pipeline of element to be created.
-      The allowed values are the following:
+    * type (required, string). Media pipeline or media element to be
+      created. The allowed values are the following:
 
         * `MediaPipeline`: Media Pipeline to be created.
 
@@ -180,16 +180,15 @@ A `create` request contains the following parameters:
     * `constructorParams` (required, object). Additional parameters. For
       example:
 
-        * `mediaPipeline` (optional, string): This parameter is
-          mandatory when a Media Element is created. In that case, the value of
-          this parameter is the identifier of the media pipeline which is going
-          to contain the Media Element to be created. This parameter is not
-          necessary when a Media Pipeline is created.
+        * `mediaPipeline` (optional, string): This parameter is only
+          mandatory for Media Elements. In that case, the value of this
+          parameter is the identifier of the media pipeline which is going to
+          contain the Media Element to be created.
 
         * `uri` (optional, string): This parameter is only required
           for Media Elements such as `PlayerEndpoint` or `RecorderEndpoint`. It
-          is an URI used to feed the Media Element, i.e. the media to be played
-          (for `PlayerEndpoint`) or the location of the recording (for
+          is an URI used in the Media Element, i.e. the media to be played (for
+          `PlayerEndpoint`) or the location of the recording (for
           `RecorderEndpoint`).
 
         *  `properties` (optional, object): Array of additional
@@ -200,7 +199,7 @@ A `create` request contains the following parameters:
       creation).
 
 
-The following example shows a Request message requesting the creation of an
+The following example shows a request message requesting the creation of an
 object of the type `MediaPipeline`:
 
 + Body (application/json)
@@ -218,7 +217,7 @@ object of the type `MediaPipeline`:
        "jsonrpc": "2.0"
    }
 
-The following example shows a Request message requesting the creation of an
+The following example shows a request message requesting the creation of an
 object of the type `WebRtcEndpoint` within an existing Media Pipeline:
 
 + Body (application/json)
@@ -584,7 +583,7 @@ An `unsubscribe` request contains the following parameters:
 
     * `sessionId` (required, string). Session identifier.
 
-The following example shows a Request message requesting the cancellation of the
+The following example shows a request message requesting the cancellation of the
 `subscription` `353be312-b7f1-4768-9117-5c2f5a087429`:
 
 + Body (application/json)

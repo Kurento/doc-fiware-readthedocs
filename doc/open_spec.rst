@@ -111,14 +111,14 @@ response to the previous `ping` request:
 Create
 ======
 
-Create message requests the creation of an Media Elements and Media Pipelines in
+Create message requests the creation of an Media Pipelines and Media Elements in
 the Media Server. The parameter type specifies the type of the object to be
 created. The parameter `params` contains all the information needed to create
 the object. Each message needs different parameters to create the object.
 
 A `sessionId` parameter is included with the identifier of the current session.
 The value of this parameter is sent by Kurento Media Server to the client in
-each response. Only the first request from client to server is allowed to not
+each response. Only the first requests from client to server are allowed to not
 include the `sessionId` (because at this point is unknown for the client).
 
 Request
@@ -309,9 +309,9 @@ An `invoke` request contains the following parameters:
  
         * `connect`. Connect two media elements.
 
-        * `play`. Start the play of a media (`PlayerEndPoint`).
+        * `play`. Start the play of a media (`PlayerEndpoint`).
 
-        * `record`. Start the record of a media (`RecorderEndPoint`).
+        * `record`. Start the record of a media (`RecorderEndpoint`).
 
         * `setOverlayedImage`. Set the image that is going to be
           overlaid on the detected faces in a media stream

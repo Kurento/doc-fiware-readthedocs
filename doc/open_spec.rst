@@ -116,10 +116,11 @@ the Media Server. The parameter type specifies the type of the object to be
 created. The parameter `params` contains all the information needed to create
 the object. Each message needs different parameters to create the object.
 
-A `sessionId` parameter is included with the identifier of the current session.
-The value of this parameter is sent by Kurento Media Server to the client in
-each response. Only the first requests from client to server are allowed to not
-include the `sessionId` (because at this point is unknown for the client).
+Media Elements have to be contained in a previously created Media Pipeline.
+Therefore, before creating Media Elements, a Media Pipeline must exist. The
+response of the creation of a Media Pipeline contains a parameter called
+`sessionId`, which must be included in the next create requests for Media
+Elements.
 
 Request
 -------
@@ -218,7 +219,10 @@ object of the type `MediaPipeline`:
    }
 
 The following example shows a request message requesting the creation of an
-object of the type `WebRtcEndpoint` within an existing Media Pipeline:
+object of the type `WebRtcEndpoint` within an existing Media Pipeline
+(identified by the parameter `mediaPipeline`). Notice that in this request, the
+`sessionId` is already present, while in the previous example it was not (since
+at that point was unknown for the client):
 
 + Body (application/json)
 
@@ -238,15 +242,13 @@ object of the type `WebRtcEndpoint` within an existing Media Pipeline:
        "jsonrpc": "2.0"
    }
 
-
 Response
 --------
 
 The response message contains the identifier of the new object in the field
-value. This message `id` has to be used in other requests (as described later).
-As stated before, the `sessionId` is also returned in each response.
-
-A `create` response contains the following parameters:
+value. As usual, the message `id` must match with the request message. The
+`sessionId` is also returned in each response. A `create` response contains the
+following parameters:
 
 * `result` (required, object). Result of the create invocation:
 
@@ -256,8 +258,9 @@ A `create` response contains the following parameters:
 
 The following examples shows the responses to the previous request messages
 (respectively, the response to the `MediaPipeline` create message, and then the
-response to the to `WebRtcEndpoint` create message):
-
+response to the to `WebRtcEndpoint` create message). In the first example, the
+parameter ``value`` identifies the created Media Pipelines, and ``sessionId``
+is the identifier of the current session.
 
 + Body (application/json)
 
@@ -271,6 +274,11 @@ response to the to `WebRtcEndpoint` create message):
        },
        "jsonrpc": "2.0"
    }
+
+In the second response example, the parameter ``value`` identifies the created
+Media Element (a ``WebRtcEndpoint`` in this case). Notice that this value also
+identifies the Media Pipeline in which the Media Element is contained. The
+parameter ``sessionId`` is also contained in the response.
 
 + Body (application/json)
 

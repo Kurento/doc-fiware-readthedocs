@@ -77,7 +77,7 @@ Installation
 ============
 
 In order to install and start the latest stable Kurento Media Server version
-(6.4.0) you have to type the following commands, one at a time and in
+(6.5.0) you have to type the following commands, one at a time and in
 the same order as listed here. When asked for any kind of confirmation, reply
 affirmatively:
 
@@ -232,7 +232,7 @@ follows:
 
    git clone https://github.com/Kurento/kurento-tutorial-java.git
    cd kurento-tutorial-java/kurento-magic-mirror
-   git checkout 6.4.0
+   git checkout 6.5.0
    mvn compile exec:java
 
 .. note::

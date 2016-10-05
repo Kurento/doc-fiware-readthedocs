@@ -46,7 +46,7 @@ installed and started in an Ubuntu 14.04 machine as follows:
 ::
 
 	echo "deb http://ubuntu.kurento.org trusty kms6" | \
-      sudo tee /etc/apt/sources.list.d/kurento.list
+		sudo tee /etc/apt/sources.list.d/kurento.list
 	wget -O - http://ubuntu.kurento.org/kurento.gpg.key | sudo apt-key add -
 	sudo apt-get update
 	sudo apt-get install kurento-media-server-6.0
@@ -128,10 +128,10 @@ created:
 
 	// Media repository
 	PlayerEndpoint playerEndpoint = new PlayerEndpoint.Builder(pipeline,
-      "http://files.kurento.org/video/filter/fiwarecut.mp4").build();
+		"http://files.kurento.org/video/filter/fiwarecut.mp4").build();
 
 	RecorderEndpoint recorderEndpoint = new RecorderEndpoint.Builder(pipeline,
-      "file:///tmp/recording.webm").build();
+		"file:///tmp/recording.webm").build();
 
 	// Filters
 	FaceOverlayFilter faceOverlayFilter = new FaceOverlayFilter.Builder(pipeline).build();
@@ -139,7 +139,7 @@ created:
 	ZBarFilter zBarFilter = new ZBarFilter.Builder(pipeline).build();
 
 	GStreamerFilter gstreamerFilter = new GStreamerFilter.Builder(pipeline,
-      "videoflip method=4").build();
+		"videoflip method=4").build();
 
 	// Group communications
 	Composite composite = new Composite.Builder(pipeline).build();
@@ -147,7 +147,7 @@ created:
 	Dispatcher dispatcher = new Dispatcher.Builder(pipeline).build();
 
 	DispatcherOneToMany dispatcherOneToMany = new DispatcherOneToMany.Builder(pipeline)
-      .build();
+		.build();
 
 From the application developer perspective, Media Elements are like Lego pieces:
 you just need to take the elements needed for an application and connect them
@@ -237,8 +237,8 @@ create several media elements:
 
 	// Media repository
 	pipeline.create('PlayerEndpoint', {uri :
-      'http://files.kurento.org/video/filter/fiwarecut.mp4'},
-      function(error, playerEndpoint) {
+	  'http://files.kurento.org/video/filter/fiwarecut.mp4'},
+	  function(error, playerEndpoint) {
 	     if (error) {
 	         // Error creating PlayerEndpoint
 	     }
@@ -247,8 +247,8 @@ create several media elements:
 	  });
 
 	pipeline.create('RecorderEndpoint', {uri :
-      'file:///tmp/recording.webm'},
-      function(error, recorderEndpoint) {
+	   'file:///tmp/recording.webm'},
+	   function(error, recorderEndpoint) {
 	     if (error) {
 	         // Error creating RecorderEndpoint
 	     }
@@ -274,7 +274,7 @@ create several media elements:
 	});
 
 	pipeline.create('GStreamerFilter', {command : 'videoflip method=4'},
-      function(error, recorderEndpoint) {
+	   function(error, recorderEndpoint) {
 	     if (error) {
 	        // Error creating GStreamerFilter
 	     }

@@ -45,7 +45,8 @@ installed and started in an Ubuntu 14.04 machine as follows:
 
 ::
 
-	echo "deb http://ubuntu.kurento.org trusty kms6" | sudo tee /etc/apt/sources.list.d/kurento.list
+	echo "deb http://ubuntu.kurento.org trusty kms6" | \
+      sudo tee /etc/apt/sources.list.d/kurento.list
 	wget -O - http://ubuntu.kurento.org/kurento.gpg.key | sudo apt-key add -
 	sudo apt-get update
 	sudo apt-get install kurento-media-server-6.0
@@ -126,23 +127,27 @@ created:
 	RtpEndpoint rtpEndpoint = new RtpEndpoint.Builder(pipeline).build();
 
 	// Media repository
-	PlayerEndpoint playerEndpoint = new PlayerEndpoint.Builder(pipeline, "http://files.kurento.org/video/filter/fiwarecut.mp4").build();
+	PlayerEndpoint playerEndpoint = new PlayerEndpoint.Builder(pipeline,
+      "http://files.kurento.org/video/filter/fiwarecut.mp4").build();
 
-	RecorderEndpoint recorderEndpoint = new RecorderEndpoint.Builder(pipeline, "file:///tmp/recording.webm").build();
+	RecorderEndpoint recorderEndpoint = new RecorderEndpoint.Builder(pipeline,
+      "file:///tmp/recording.webm").build();
 
 	// Filters
 	FaceOverlayFilter faceOverlayFilter = new FaceOverlayFilter.Builder(pipeline).build();
 
 	ZBarFilter zBarFilter = new ZBarFilter.Builder(pipeline).build();
 
-	GStreamerFilter gstreamerFilter = new GStreamerFilter.Builder(pipeline, "videoflip method=4").build();
+	GStreamerFilter gstreamerFilter = new GStreamerFilter.Builder(pipeline,
+      "videoflip method=4").build();
 
 	// Group communications
 	Composite composite = new Composite.Builder(pipeline).build();
 
 	Dispatcher dispatcher = new Dispatcher.Builder(pipeline).build();
 
-	DispatcherOneToMany dispatcherOneToMany = new DispatcherOneToMany.Builder(pipeline).build();
+	DispatcherOneToMany dispatcherOneToMany = new DispatcherOneToMany.Builder(pipeline)
+      .build();
 
 From the application developer perspective, Media Elements are like Lego pieces:
 you just need to take the elements needed for an application and connect them
@@ -231,21 +236,25 @@ create several media elements:
 	});
 
 	// Media repository
-	pipeline.create('PlayerEndpoint', {uri : 'http://files.kurento.org/video/filter/fiwarecut.mp4'}, function(error, playerEndpoint) {
-	   if (error) {
-	      // Error creating PlayerEndpoint
-	   }
+	pipeline.create('PlayerEndpoint', {uri :
+      'http://files.kurento.org/video/filter/fiwarecut.mp4'},
+      function(error, playerEndpoint) {
+	     if (error) {
+	         // Error creating PlayerEndpoint
+	     }
 
-	   // Success creating PlayerEndpoint
-	});
+	     // Success creating PlayerEndpoint
+	  });
 
-	pipeline.create('RecorderEndpoint', {uri : 'file:///tmp/recording.webm'}, function(error, recorderEndpoint) {
-	   if (error) {
-	      // Error creating RecorderEndpoint
-	   }
+	pipeline.create('RecorderEndpoint', {uri :
+      'file:///tmp/recording.webm'},
+      function(error, recorderEndpoint) {
+	     if (error) {
+	         // Error creating RecorderEndpoint
+	     }
 
-	  // Success creating RecorderEndpoint
-	});
+	     // Success creating RecorderEndpoint
+	  });
 
 	// Filters
 	pipeline.create('FaceOverlayFilter', function(error, faceOverlayFilter) {
@@ -264,13 +273,14 @@ create several media elements:
 	  // Success creating WebRtcEndpoint
 	});
 
-	pipeline.create('GStreamerFilter', {command : 'videoflip method=4'}, function(error, recorderEndpoint) {
-	   if (error) {
-	      // Error creating GStreamerFilter
-	   }
+	pipeline.create('GStreamerFilter', {command : 'videoflip method=4'},
+      function(error, recorderEndpoint) {
+	     if (error) {
+	        // Error creating GStreamerFilter
+	     }
 
-	   // Success creating GStreamerFilter
-	});
+	     // Success creating GStreamerFilter
+	  });
 
 	// Group communications
 	pipeline.create('Composite', function(error, composite) {

@@ -104,7 +104,8 @@ following:
    {
      "mediaServer" : {
        "resources": {
-       //  //Resources usage limit for raising an exception when an object creation is attempted
+       //  //Resources usage limit for raising an exception when an object creation is
+       //  //attempted
        //  "exceptionLimit": "0.8",
        //  // Resources usage limit for restarting the server when no objects are alive
        //  "killLimit": "0.7",

@@ -381,7 +381,7 @@ install these tools in Ubuntu please execute these commands:
 	sudo apt-get install git
 	sudo apt-get install openjdk-7-jdk
 	sudo apt-get install maven
-	curl -sL https://deb.nodesource.com/setup | sudo bash -
+	curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 	sudo apt-get install -y nodejs
 	sudo npm install -g bower
 
@@ -405,7 +405,7 @@ The pre-requisites to run this JavaScript demo are
 ::
 
 	sudo apt-get install git
-	curl -sL https://deb.nodesource.com/setup | sudo bash -
+	curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 	sudo apt-get install -y nodejs
 	sudo npm install -g bower
 	sudo npm install http-server -g
@@ -428,7 +428,7 @@ The pre-requisites to run this Node.js demo are `Git <http://git-scm.com/>`__,
 ::
 
 	sudo apt-get install git
-	curl -sL https://deb.nodesource.com/setup | sudo bash -
+	curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 	sudo apt-get install -y nodejs
 	sudo npm install -g bower
 

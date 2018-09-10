@@ -1,5 +1,5 @@
-Configuration Guide
-===================
+Configuration
+%%%%%%%%%%%%%
 
 Kurento works by orchestrating a broad set of technologies that must be
 made to work together. Some of these technologies can accept different
@@ -27,8 +27,9 @@ configuration files:
    which have an effect on features such as the *Debug Logging*, or the
    *Kernel Dump* files that are generated when a crash happens.
 
+
 STUN and TURN Configuration
----------------------------
+===========================
 
 If Kurento Media Server is located behind a NAT you need to use a
 `STUN <https://en.wikipedia.org/wiki/STUN>`__ or
@@ -43,7 +44,7 @@ configuration file:
 ``/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini``
 
 STUN Configuration
-~~~~~~~~~~~~~~~~~~
+------------------
 
 For configuring the STUN Server in Kurento you must *(uncomment and)*
 set the following parameters in the WebRtcEndPoint configuration file:
@@ -86,7 +87,7 @@ There is plenty of public STUN servers available, for example:
    54.172.47.69:3478
 
 TURN Configuration
-~~~~~~~~~~~~~~~~~~
+------------------
 
 For configuring the STUN Server in Kurento you must *(uncomment and)*
 set the following parameter in the WebRtcEndPoint configuration file:
@@ -98,7 +99,7 @@ set the following parameter in the WebRtcEndPoint configuration file:
 As before, TURN address should be an IP address (not domain name).
 
 Remarks
-~~~~~~~
+-------
 
 1. Note that it is somewhat easy to find free STUN servers available on
    the net, because their functionality is pretty limited and it is not
@@ -108,17 +109,21 @@ Remarks
    server which works for free while offering good performance. Usually,
    each user opts to maintain their own private TURN server instances.
 
+   |
+
 2. `Coturn <http://coturn.net/>`__ is an open source implementation of a
    TURN/STUN server. In the
    `FAQ <https://doc-kurento.readthedocs.io/en/stable/user/faq.html>`__
    section there is a description about how to install and configure it.
+
+   |
 
 3. In order to check the availability of either TURN and STUN servers
    you can check here:
    https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
 
 Debug Logging
--------------
+=============
 
 Kurento Media Server generates log files that are stored in
 ``/var/log/kurento-media-server/``. The content of this folder is as
@@ -163,7 +168,7 @@ file:
    [timestamp] [pid] [memory]  info  KurentoMediaServer  main.cpp:255  main()  Kurento Media Server started
 
 KMS Logging levels and components
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 Each different **component** of KMS is able to generate its own logging
 messages. Besides that, each individual logging message has a severity
@@ -220,7 +225,7 @@ Logging categories and levels can be set by two methods:
       /usr/bin/kurento-media-server
 
 Suggested levels
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 Here are some tips on what logging components and levels could be most
 useful depending on what is the issue to be analyzed. They are given in
@@ -316,7 +321,7 @@ KMS configuration file, */etc/default/kurento-media-server*:
       export GST_DEBUG="3,check:5"
 
 3rd-party libraries: libnice
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **libnice** is `the GLib
 implementation <https://nice.freedesktop.org/>`__ of

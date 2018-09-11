@@ -162,8 +162,8 @@ This is a glossary of terms that often appear in discussion about multimedia tra
        NAT traversal (sometimes abbreviated as NAT-T) is a general term for techniques that establish and maintain Internet protocol connections traversing network address translation (NAT) gateways, which break end-to-end connectivity. Intercepting and modifying traffic can only be performed transparently in the absence of secure encryption and authentication.
 
        .. seealso::
-          :doc:`/knowledge/nat`
-              Entry in our Knowledge Base.
+          `NAT Types and NAT Traversal <https://doc-kurento.readthedocs.io/en/stable/knowledge/nat.html>`__ 
+              Entry in Kurento Knowledge Base.
 
           `NAT Traversal White Paper <http://www.nattraversal.com/>`__
               White paper on NAT-T and solutions for end-to-end connectivity in its presence

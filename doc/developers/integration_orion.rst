@@ -173,3 +173,13 @@ for the specifications of the library for more detail.
 **Follow the
 proposed** \ `tutorial <https://github.com/naevatec/kurento-fiware-java/tree/master/kurento-tutorial-java>`__\  **to
 get this going!**
+
+Advanced
+========
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+  
+   Integration with Orion Module (Java) <kurento_fiware>
+   Tutorial <../tutorials/orion_integration>

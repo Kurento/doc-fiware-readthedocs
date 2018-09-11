@@ -25,13 +25,14 @@ Following this parallelism, multimedia applications created using Kurento can al
 
 The interesting aspect of this discussion is that, as happens with web development, Kurento applications can place the Presentation layer at the client side and the Service layer at the server side. However the Application logic, in both cases, can be located at either of the sides or even distributed between them. This idea is represented in the following picture:
 
-.. figure:: ../images/Applications_Layered_Architecture.png
+.. figure:: /images/Applications_Layered_Architecture.png
    :align:  center
+   :width: 50%
    :alt:    Layered architecture of web and multimedia applications
 
    *Layered architecture of web and multimedia applications. Applications created using Kurento (right) can be similar to standard Web applications (left). Both types of applications may choose to place the application logic at the client or at the server code.*
 
-This means that Kurento developers can choose to include the code creating the specific media pipeline required by their applications at the client side (using a suitable :doc:`Kurento Client </features/kurento_client>` or directly with :doc:`Kurento Protocol </features/kurento_protocol>`) or can place it at the server side.
+This means that Kurento developers can choose to include the code creating the specific media pipeline required by their applications at the client side (using a suitable Kurento Client or directly with Kurento Protocol) or can place it at the server side.
 
 Both options are valid but each of them implies different development styles. Having said this, it is important to note that in the web developers usually tend to maintain client side code as simple as possible, bringing most of their application logic to the server. Reproducing this kind of development experience is the most usual way of using Kurento.
 
@@ -44,23 +45,23 @@ Both options are valid but each of them implies different development styles. Ha
 Application Architecture
 ========================
 
-Kurento, as most multimedia communication technologies out there, is built using two layers (called *Pipelines*) to abstract key functions in all interactive communication systems:
+Kurento, as most multimedia communication technologies out there, is built using two layers (called *Planes*) to abstract key functions in all interactive communication systems:
 
-- **Signaling Pipeline**. The parts of the system in charge of the management of communications, that is, the modules that provides functions for media negotiation, QoS parametrization, call establishment, user registration, user presence, etc. are conceived as forming part of the :term:`Signaling Pipeline`.
+- **Signaling Plane**. The parts of the system in charge of the management of communications, that is, the modules that provides functions for media negotiation, QoS parametrization, call establishment, user registration, user presence, etc. are conceived as forming part of the :term:`Signaling Plane`.
 
-- **Media Pipeline**. Functionalities such as media transport, media encoding/decoding and media processing make the  :term:`Media Pipeline`, which takes care of handling the media. The distinction comes from the telephony differentiation between the handling of voice and the handling of meta-information such as tone, billing, etc.
+- **Media Plane**. Functionalities such as media transport, media encoding/decoding and media processing make the  :term:`Media Plane`, which takes care of handling the media. The distinction comes from the telephony differentiation between the handling of voice and the handling of meta-information such as tone, billing, etc.
 
 The following figure shows a conceptual representation of the high level architecture of Kurento:
 
-.. figure:: ../images/Architecture.png
+.. figure:: /images/Architecture.png
    :alt: Kurento Architecture
    :align: center
 
-   *Kurento Architecture. Kurento architecture follows the traditional separation between signaling and media Pipelines.*
+   *Kurento Architecture. Kurento architecture follows the traditional separation between signaling and media Planes.*
 
-The **right side** of the picture shows the application, which is in charge of the signaling Pipeline and contains the business logic and connectors of the particular multimedia application being deployed. It can be build with any programming technology like Java, Node.js, PHP, Ruby, .NET, etc. The application can use mature technologies such as :term:`HTTP` and :term:`SIP` Servlets, Web Services, database connectors, messaging services, etc. Thanks to this, this Pipeline provides access to the multimedia signaling protocols commonly used by end-clients such as :term:`SIP`, RESTful and raw HTTP based formats, SOAP, RMI, CORBA or JMS. These signaling protocols are used by client side of applications to command the creation of media sessions and to negotiate their desired characteristics on their behalf. Hence, this is the part of the architecture, which is in contact with application developers and, for this reason, it needs to be designed pursuing simplicity and flexibility.
+The **right side** of the picture shows the application, which is in charge of the signaling Plane and contains the business logic and connectors of the particular multimedia application being deployed. It can be build with any programming technology like Java, Node.js, PHP, Ruby, .NET, etc. The application can use mature technologies such as :term:`HTTP` and :term:`SIP` Servlets, Web Services, database connectors, messaging services, etc. Thanks to this, this Plane provides access to the multimedia signaling protocols commonly used by end-clients such as :term:`SIP`, RESTful and raw HTTP based formats, SOAP, RMI, CORBA or JMS. These signaling protocols are used by client side of applications to command the creation of media sessions and to negotiate their desired characteristics on their behalf. Hence, this is the part of the architecture, which is in contact with application developers and, for this reason, it needs to be designed pursuing simplicity and flexibility.
 
-On the **left side**, we have the Kurento Media Server, which implements the media Pipeline capabilities providing access to the low-level media features: media transport, media encoding/decoding, media transcoding, media mixing, media processing, etc. The Kurento Media Server must be capable of managing the multimedia streams with minimal latency and maximum throughput. Hence the Kurento Media Server must be optimized for efficiency.
+On the **left side**, we have the Kurento Media Server, which implements the media Plane capabilities providing access to the low-level media features: media transport, media encoding/decoding, media transcoding, media mixing, media processing, etc. The Kurento Media Server must be capable of managing the multimedia streams with minimal latency and maximum throughput. Hence the Kurento Media Server must be optimized for efficiency.
 
 
 
@@ -78,8 +79,9 @@ among three main modules:
 
 The interactions maintained among these modules depend on the specifics of each application. However, in general, for most applications can be reduced to the following conceptual scheme:
 
-.. figure:: ../images/Generic_interactions.png
+.. figure:: /images/Generic_interactions.png
    :align:  center
+   :width: 50%
    :alt:    Main interactions between architectural modules
 
    *Main interactions between architectural modules. These occur in two phases: negotiation and media exchange. Remark that the color of the different arrows and boxes is aligned with the architectural figures presented above.
@@ -116,8 +118,9 @@ Real time WebRTC applications with Kurento
 
 The client communicates its desired media capabilities through an :term:`SDP Offer/Answer` negotiation. Hence, Kurento is able to instantiate the appropriate WebRTC endpoint, and to require it to generate an SDP Answer based on its own capabilities and on the SDP Offer. When the SDP Answer is obtained, it is given back to the client and the media exchange can be started. The interactions among the different modules are summarized in the following picture:
 
-.. figure:: ../images/RTC_session.png
+.. figure:: /images/RTC_session.png
    :align: center
+   :width: 50%
    :alt:   Interactions in a WebRTC session
 
    *Interactions in a WebRTC session. During the negotiation phase, an SDP Offer is sent to KMS, requesting the capabilities of the client. As a result, Kurento Media Server generates an SDP Answer that can be used by the client for establishing the media exchange.*
@@ -126,8 +129,9 @@ The application developer is able to create the desired pipeline during the nego
 
 As an example, imagine that you want to create a WebRTC application recording the media received from the client and augmenting it so that if a human face is found, a hat will be rendered on top of it. This pipeline is schematically shown in the figure below, where we assume that the Filter element is capable of detecting the face and adding the hat to it.
 
-.. figure:: ../images/RTC_session_pipeline.png
+.. figure:: /images/RTC_session_pipeline.png
    :align: center
+   :width: 80%
    :alt:   Example pipeline for a WebRTC session
 
    *Example pipeline for a WebRTC session. A WebRtcEndpoint is connected to a RecorderEndpoint storing the received media stream and to an Augmented Reality filter, which feeds its output media stream back to the client. As a result, the end user will receive its own image filtered (e.g. with a hat added onto her head) and the stream will be recorded and made available for further recovery into a repository (e.g. a file).*
@@ -141,6 +145,7 @@ From the application developer perspective, Media Elements are like *Lego* piece
 
 .. figure:: /images/media-pipeline-sample.png
    :align: center
+   :width: 50%
    :alt: Simple Example of a Media Pipeline
 
    *Simple Example of a Media Pipeline*
@@ -160,4 +165,4 @@ For example, if you want to create an application recording WebRTC streams into 
 
    WebRtcEndpoint.connect(RecorderEndpoint)
 
-To simplify the handling of WebRTC streams in the client-side, Kurento provides an utility called *WebRtcPeer*. Nevertheless, the standard WebRTC API (*getUserMedia*, *RTCPeerConnection*, and so on) can also be used to connect to *WebRtcEndpoints*. For further information please visit the :doc:`Tutorials section </tutorials/index>`.
+To simplify the handling of WebRTC streams in the client-side, Kurento provides an utility called *WebRtcPeer*. Nevertheless, the standard WebRTC API (*getUserMedia*, *RTCPeerConnection*, and so on) can also be used to connect to *WebRtcEndpoints*. For further information please visit the :doc:`Tutorials section <../tutorials/index>`.

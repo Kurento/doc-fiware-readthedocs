@@ -36,7 +36,7 @@ provides the following features:
 .. toctree::
    :glob:
    :hidden:
-   :maxdepth: 3
+   :maxdepth: 5
 
    Getting Started <quick_start_guide>
    Installation and Administration Guide <admin/index>

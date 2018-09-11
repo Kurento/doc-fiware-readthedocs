@@ -49,7 +49,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'doc/index'
 
 # General information about the project.
 project = 'FIWARE-Stream-Oriented-GE'
@@ -138,7 +138,7 @@ html_favicon = 'images/favicon.ico'
 # script files). Relative paths are taken as relative to the configuration
 # directory. They are copied to the output's _static directory after the theme's
 # static files, so a file named default.css will overwrite the theme's default.css.
-html_static_path = ['_static', 'langdoc']
+html_static_path = ['images']
 
 
 # -- Options for HTMLHelp output ------------------------------------------

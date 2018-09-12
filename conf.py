@@ -138,7 +138,7 @@ html_favicon = 'images/favicon.ico'
 # script files). Relative paths are taken as relative to the configuration
 # directory. They are copied to the output's _static directory after the theme's
 # static files, so a file named default.css will overwrite the theme's default.css.
-html_static_path = ['images']
+html_static_path = ['images','build/langdoc']
 
 
 # -- Options for HTMLHelp output ------------------------------------------

@@ -18,13 +18,12 @@ endif
 SPHINXOPTS  :=
 SPHINXBUILD := sphinx-build
 SPHINXPROJ  := FIWARE-Kurento
-SOURCEDIR   := doc
+SOURCEDIR   := .
 BUILDDIR    := build
-WORKDIR     := $(CURDIR)/$(BUILDDIR)/$(SOURCEDIR)
+WORKDIR     := $(CURDIR)/$(BUILDDIR)/
 HTMLDIR     := $(BUILDDIR)/html
 
 # Get the version number
-VERSION := $(strip $(shell cat VERSION))
 # FIXME: '.SHELLSTATUS' requires Make >= 4.2 (Xenial has 4.1)
 # ifneq ($(.SHELLSTATUS),0)
 # $(error Cannot read 'VERSION', make sure it exists)
@@ -60,3 +59,44 @@ html:
 	rm -R $(HTMLDIR)
 	mkdir $(HTMLDIR)
 	$(SPHINXBUILD) -c . $(SPHINXOPTS) $(SOURCEDIR) $(HTMLDIR)
+
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|CLIENT_JAVA_VERSION|@$(CLIENT_JAVA_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|CLIENT_JS_VERSION|@$(CLIENT_JS_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|UTILS_JS_VERSION|@$(UTILS_JS_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|TUTORIAL_JAVA_VERSION|@$(TUTORIAL_JAVA_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|TUTORIAL_JS_VERSION|@$(TUTORIAL_JS_VERSION)@" {} \;
+	find $(HTMLDIR) -name "*.html" -exec sed -i -e "s@|TUTORIAL_NODE_VERSION|@$(TUTORIAL_NODE_VERSION)@" {} \;
+	@echo
+	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
+
+langdoc:
+	echo "#### 'langdoc' target BEGIN ####"
+
+	# Care must be taken because the Current Directory changes in this target,
+	# so it's better to use absolute paths for destination dirs.
+	# The 'client-doc' part must match the setting 'html_static_path' in 'conf.py',
+	# and its contents must match the URLs used in the documentation files.
+	$(eval WORKPATH := $(CURDIR)/$(BUILDDIR)/kurento-orion-src)
+	$(eval DESTPATH := $(CURDIR)/$(BUILDDIR)/langdoc)
+	rm -Rf $(WORKPATH)
+	mkdir -p $(WORKPATH)
+	mkdir -p $(DESTPATH)
+
+	# kurento-client javadoc
+	cd $(WORKPATH)
+	git clone https://github.com/Kurento/kurento-fiware-java.git 
+	echo "Using master branch"
+	cd kurento-fiware-java/kurento-fiware || { echo "ERROR: 'cd' failed, ls:"; ls -lA; rm -Rf $(WORKPATH); exit 1; }
+	mvn --batch-mode --quiet clean package \
+		-DskipTests || { echo "ERROR: 'mvn clean' failed"; rm -Rf $(WORKPATH); exit 1; }
+	mvn --batch-mode --quiet javadoc:javadoc \
+		-DreportOutputDirectory="$(DESTPATH)" -DdestDir="kurento-orion" \
+		-Dsourcepath="src/main/java:target/generated-sources/kurento-orion" \
+		-Dsubpackages="org.kurento.orion" -DexcludePackageNames="*.internal" \
+		|| { echo "ERROR: 'mvn javadoc' failed"; rm -Rf $(WORKPATH); exit 1; }
+	rm -Rf $(WORKPATH) || { echo "ERROR: 'mvn clean' failed"; exit 1; }
+	echo "#### 'langdoc' target END ####"
+
+all: langdoc html

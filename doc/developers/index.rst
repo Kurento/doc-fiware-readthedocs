@@ -17,7 +17,7 @@ in advance!
 .. toctree::
    :glob:
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 3
 
    Writing Kurento Applications <kurento_apps>
    Integration with Orion <integration_orion>

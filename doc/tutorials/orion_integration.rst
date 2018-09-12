@@ -11,4 +11,6 @@ This example is based on de Platedetector module JAVA example, wher the WebRTC e
 For the impatient: Running this example. 
 ========================================
 
-First of all you should install Kurento Media Server and the Orion Context Broker to run this demo. Please visit the :doc:`installation guide </admin/install> for installing the kms and the Orion Install Guide <https://fiware-orion.readthedocs.io/en/master/admin/install/index.html>`__.
+First of all you should install Kurento Media Server and the Orion Context Broker to run this demo. 
+Please visit the :doc:`installation guide <../admin/install>` for installing the kms and the 
+`Orion Install Guide <https://fiware-orion.readthedocs.io/en/master/admin/install/index.html>`__.

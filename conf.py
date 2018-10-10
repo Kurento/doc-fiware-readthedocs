@@ -22,6 +22,7 @@ master_doc = 'index'
 html_context = {
    'css_files': [
       '_static/css/theme.css',
-      'https://fiware.org/style/fiware_readthedocs.css'
+      'https://fiware.org/style/fiware_readthedocs.css',
+      'https://www.fiware.org/style/fiware_readthedocs_media_streams.css'
    ]
 }

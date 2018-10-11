@@ -713,4 +713,3 @@ Response
 --------
 
 There is no response to the `onEvent` message.
-

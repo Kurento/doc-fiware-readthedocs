@@ -1,8 +1,6 @@
 FIWARE Stream Oriented Generic Enabler - Overview
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=================================================
 
-Introduction
-============
 
 The Stream Oriented Generic Enabler (GE) provides a framework devoted to
 simplify the development of complex interactive multimedia applications through
@@ -34,14 +32,29 @@ provides the following features:
 - Automatic media transcodification between any of the codecs supported by
   GStreamer including VP8, H.264, H.263, AMR, OPUS, Speex, G.711, etc.
 
-Table of Contents
-=================
+
+Why Using Kurento in a “Smart Solution”?
+========================================
+
+The Stream-oriented GE provides a suitable structure to multimedia
+information, so it can be inserted into the context in an homogeneous
+way and can be consumed by client application front-ends or application
+backends just like any other context information.
+
+Information can be extracted to convert media devices like cameras into
+IoT devices using the Kurento real-time media Stream processing GE.
+Context information can be generated as a result of the media streams
+analysis or the reception of context data to take decisions in the way
+the media is processed.
 
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :hidden:
+   :includehidden:
+   :maxdepth: 6
 
-   Programmers Guide <doc/user_guide>
-   Installation and Administration Guide <doc/admin_guide>
-   Architecture Description <doc/architecture>
-   Open API Specification <doc/open_spec>
+   Getting Started <quick_start_guide>
+   Installation and Administration Guide <admin/index>
+   Programmers Manual <developers/index>
+   Open API Specification <open_spec>
+   Glossary <glossary>

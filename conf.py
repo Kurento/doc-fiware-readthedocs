@@ -189,6 +189,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 html_context = {
    'css_files': [
       '_static/css/theme.css',
-      'https://fiware.org/style/fiware_readthedocs.css'
+      'https://fiware.org/style/fiware_readthedocs.css',
+      'https://fiware.org/style/fiware_readthedocs_media_streams.css'
    ]
 }

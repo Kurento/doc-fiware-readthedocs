@@ -191,25 +191,31 @@ client-side, the KMS platedetector module (*platedetector*) and the kurento-fiwa
 module (*kurento-fiware*). 
 
 .. sourcecode:: xml
-	...
+ 
+   [...]
    <dependencies>
-       <dependency>
-      <groupId>org.kurento</groupId>
-      <artifactId>kurento-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.kurento</groupId>
-      <artifactId>kurento-utils-js</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.kurento.module</groupId>
-      <artifactId>platedetector</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.kurento</groupId>
-      <artifactId>kurento-fiware</artifactId>
-      <version>${kurento.integration.version}</version>
-    </dependency>
+      <dependency>
+         <groupId>org.kurento</groupId>
+         <artifactId>kurento-client</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.kurento</groupId>
+         <artifactId>kurento-utils-js</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.kurento.module</groupId>
+         <artifactId>platedetector</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.kurento</groupId>
+         <artifactId>kurento-fiware</artifactId>
+         <version>${kurento.integration.version}</version>
+      </dependency>
    </dependencies>
-   ...
+   [...]
+
+
+.. note:: 
+
+  We are in active development. You can find the latest version of Kurento Java Client at Maven Central.
 
